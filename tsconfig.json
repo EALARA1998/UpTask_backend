@@ -1,15 +1,31 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "lib": ["esnext"],
-        "target": "ESNext",
-        "moduleResolution": "NodeNext",
-        "module": "NodeNext",
-        "strict": false,
-        "sourceMap": true,
-        "esModuleInterop": true,
-        "declaration": true
-    },
-    "include": ["src/**/*.ts"]
+  "compilerOptions": { // Configura cómo el compilador TypeScript (tsc) genera el JavaScript final.
+    "outDir": "./dist", // Carpeta de salida del código compilado (JS generado).
+    "rootDir": "./src", // Indica la carpeta raíz de tu código TypeScript.
+    "target": "esnext", // Define la versión de JavaScript que se generará.
+    "lib": ["ESNext"], // Indica qué bibliotecas de tipos de JavaScript incluir (por ejemplo DOM, ES2015, etc.).
+    "sourceMap": true, // Genera archivos .map que permiten depurar el código TypeScript en el navegador o VSCode.
+    "declaration": true, // Crea archivos .d.ts (declaraciones de tipos).
+    "module": "NodeNext", // Define el sistema de módulos que se usará en el código JS final.
+                          // "CommonJS" → Para Node.js tradicional (usa require y module.exports).
+                          // "ESNext" → Para ESM moderno (usa import/export).
+    "moduleResolution": "NodeNext", // Le dice al compilador cómo resolver los imports (cómo buscar archivos y módulos).
+                                // "node" significa que seguirá las mismas reglas que usa Node.js:
+                                // Buscará index.ts o index.js automáticamente.
+                                // Mirará en node_modules.
+    "esModuleInterop": true, // Permite importar módulos CommonJS con la sintaxis de import moderna.
+                            // Por ejemplo, sin esto tendrías que hacer:
+                            // import * as express from "express";
+                            // Con esto activado puedes hacer:
+                            // import express from "express";
+    "strict": true, // Activa todas las comprobaciones estrictas de TypeScript:
+    "skipLibCheck": true, // Activa todas las comprobaciones estrictas de TypeScript:
+                          // Requiere definir todos los tipos.
+                          // No permite null o undefined sin declararlos.
+                          // Evita muchos errores silenciosos.
+    "experimentalDecorators": true, // Omite la verificación de tipos dentro de los archivos de definición (.d.ts) de librerías externas. Esto acelera la compilación y evita errores molestos por dependencias externas mal tipadas.
+    "emitDecoratorMetadata": true, // Emite metadatos adicionales cuando usas decoradores. Necesario para frameworks como NestJS, que leen esa metadata en runtime (por ejemplo para inyección de dependencias).
+  },
+  "include": ["src/**/*.ts"], // Le dice a TypeScript qué archivos debe compilar.
+  "exclude": ["src/**/*.test.ts"] // Qué archivos debe ignorar.
 }

@@ -20,4 +20,6 @@ server.listen(port, () => {
  * https://mongoosejs.com/docs/schematypes.html
  * MVC
  * npm i express-validator
+ * npm i morgan
+ * npm i -D @types/morgan
 */
